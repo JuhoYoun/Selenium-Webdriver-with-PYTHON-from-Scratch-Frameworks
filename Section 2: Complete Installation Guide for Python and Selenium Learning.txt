@@ -7,4 +7,6 @@ after downloading new version.
 
 terminal -> cd / -> open Library -> 이러면 Library 폴더가 열린다  강의에서는 이 디렉토리 내부의 Frameworks 디렉토리 내부에서 파이썬이 저장되 있다고 하는데 나는 아니네?
 
-어쨌든 맥은 파이썬이 깔린 곳에 있는 bin 디렉토리가 python path 경로에 자동으로 똑같이 복사되고 파이썬 쓸 때 그 경로를 참조한다는 뜻인거같다 
+어쨌든 맥은 파이썬이 깔린 곳에 있는 bin 디렉토리가 python path 경로에 자동으로 똑같이 복사되고 파이썬 쓸 때 그 경로를 참조한다는 뜻인거같다
+
+pip install selenium 하면 selenium 패키지가 파이썬 environment에 injected 된다 
