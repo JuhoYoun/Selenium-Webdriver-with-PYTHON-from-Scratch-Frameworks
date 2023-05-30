@@ -1,0 +1,10 @@
+which python -> python path 보여준다
+which python3 -> 이것도 마찬가지
+
+python3 command gives the latest version which you downloaded. This is only applicable if you have multiple versions of python and one of the version is less than 3.
+If you have only one version of Python, use word python directly. But do remember that python software(older) one comes as default in MAC, so there is 99% chances that you will have 2 versions
+after downloading new version.
+
+terminal -> cd / -> open Library -> 이러면 Library 폴더가 열린다  강의에서는 이 디렉토리 내부의 Frameworks 디렉토리 내부에서 파이썬이 저장되 있다고 하는데 나는 아니네?
+
+어쨌든 맥은 파이썬이 깔린 곳에 있는 bin 디렉토리가 python path 경로에 자동으로 똑같이 복사되고 파이썬 쓸 때 그 경로를 참조한다는 뜻인거같다 
