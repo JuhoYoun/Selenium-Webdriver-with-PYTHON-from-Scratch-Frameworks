@@ -72,7 +72,7 @@ This command will set up the Selenium WebDriver client library on your machine w
 The optional –U flag will upgrade the existing version of the installed package
 
 
-강의에서는 파이썬 인터프리터를 셀레니움이 깔려있는 로컬 인터프리터로 맵핑했다
+강의에서는 파이썬 인터프리터를 셀레니움이 깔려있는 로컬 인터프리터로 맵핑했다 이렇게 되면 프로젝트 디렉토리 안의 venv 폴더 안에 있는 파이썬과 패키지들을 사용하는게 아니라 로컬 인터프리터와 패키지들을 사용하게 된다 (venv가 켜져있어도?)
 
 
 
