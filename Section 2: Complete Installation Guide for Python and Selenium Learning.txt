@@ -10,6 +10,10 @@ terminal -> cd / -> open Library -> 이러면 Library 폴더가 열린다  강�
 어쨌든 맥은 파이썬이 깔린 곳에 있는 bin 디렉토리가 python path 경로에 자동으로 똑같이 복사되고 파이썬 쓸 때 그 경로를 참조한다는 뜻인거같다
 
 pip install selenium 하면 selenium 패키지가 파이썬 environment에 injected 된다 
+강의에서 If you are MAC user, give below command if you have multiple python installs. pip3 install selenium 라고 하는데 이건 아마 python 과 pip 명령어가 2 버전 파이썬에 연결되있을 수 있으니 pip3 로 해 확실하게 
+파이썬3 를 사용하려고 하는거같다 나는 그냥 가상환경에 받았다
+pip show selenium -> 패키지 받은게 보인다
+
 
 #############
 질문: 터미널에 이렇게 치니까 which python  바로 python: aliased to /opt/homebrew/bin/python3 이렇게 나왔다 여기서 질문 python 커맨드와 해당 경로는 어떻게 연결되 있는거야 ?
@@ -41,3 +45,35 @@ PATH 환경 변수는 여러 개의 디렉토리 경로를 포함하며, 이 경
 만약 어떤 python3 실행 파일이 사용되는지 확인하고 싶다면, which python3 커맨드를 사용하면 됩니다. 이 커맨드는 python3 실행 파일의 정확한 경로를 출력해줍니다.
 
 -> which python3 명령어를 쳤을때 그래서 아나콘다 배포반이 나오나보다 (Anaconda 에서 A 가 알파벳중 가장 빨라서 ..)
+###############
+
+Python, Selenium Installation Guide Download
+Installing Python and Selenium
+
+Installing Python:
+
+Windows : http://python.org/download/.
+
+Note : IF you are using Linux, MacOS X, Unix operating Systems then python will be installed by default with OS
+
+1.What is PIP installer Tool?
+pip is a package management system used to install and manage software packages written in Python
+pip is a recursive acronym that can stand for either "Pip Installs Packages" or "Pip Installs Python
+
+2.Where do we get this PIP Tool? And how to configure it in our Local Machines
+
+3.Installing Selenium
+Use Below command on PIP to install Selenium Package
+pip install selenium
+
+This command will set up the Selenium WebDriver client library on your machine with all modules and classes that we will need to create automated scripts using Python
+
+4.pip install -U selenium
+The optional –U flag will upgrade the existing version of the installed package
+
+
+강의에서는 파이썬 인터프리터를 셀레니움이 깔려있는 로컬 인터프리터로 맵핑했다
+
+
+
+
