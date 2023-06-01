@@ -20,3 +20,38 @@ file_path = os.path.join(current_dir, 'text.txt')
 file = open(file_path)
 위 코드를 사용하면 read.py 스크립트가 어디에서 실행되든 상관 없이 항상 같은 디렉토리에 있는 text.txt 파일을 읽습니다.
 #########
+#########
+readlines()
+
+
+readlines()는 Python의 파일 객체 메서드로, 파일의 모든 줄을 문자열 리스트로 읽어 들입니다. 각 줄은 줄바꿈 문자로 끝납니다.
+
+다음은 readlines() 메서드를 사용하는 간단한 예제입니다:
+
+python
+Copy code
+with open('text.txt', 'r') as file:
+    lines = file.readlines()
+
+for line in lines:
+    print(line)
+위 코드는 text.txt 파일을 열고, 파일의 모든 줄을 readlines() 메서드를 사용해 읽습니다. 그런 다음 각 줄을 반복하며 출력합니다.
+##############
+#############
+Exception() : Exception은 표준 Python 클래스이며, 이는 대부분의 내장 예외의 기본 클래스입니다. 프로그램에서 예외를 직접 생성하려면, Exception 클래스 또는 이를 상속하는 클래스의 인스턴스를 만들어 raise 문으로 던질 수 있습니다. 예외가 발생하면, 프로그램의 흐름은 중단되고, 이 예외를 처리하는 가장 가까운 예외 처리기(try/except 블록)로 이동합니다.
+
+python
+Copy code
+if some_condition_not_met:
+    raise Exception("Descriptive error message")
+여기서 some_condition_not_met이 True라면, "Descriptive error message"라는 메시지와 함께 Exception이 발생합니다.
+
+assert() : assert 문은 디버깅 도구로 주로 사용되며, 코드의 특정 부분에서 가정한 조건이 충족되는지 확인합니다. assert문 다음의 표현식이 False로 평가되면, AssertionError가 발생합니다. 선택적으로, assert문은 실패시 출력할 메시지를 두 번째 인수로 받을 수 있습니다.
+
+python
+Copy code
+assert x > 0, "x is not positive"
+이 코드는 x가 양수인지 확인하고, 그렇지 않다면 "x is not positive"라는 메시지와 함께 AssertionError를 발생시킵니다.
+
+Exception과 assert 모두 오류를 발생시키지만, assert는 코드의 특정 부분이 예상대로 동작하는지 확인하고, Exception은 더 일반적인 오류 및 예외 처리 상황에 사용됩니다. 디버깅과 테스트 중에는 assert를 사용하고, 실제 프로그램에서는 예외 처리를 위해 Exception을 사용하는 것이 좋습니다.
+#################
