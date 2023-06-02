@@ -1,12 +1,39 @@
+chrome cannot be invoked directly so we need to call chrome driver which is an intermidiate file
+webdriver.Chrome(service=service_obj)  ->  이게 intermidiate 이라는 뜻인듯
+
+service_obj = Service("path of chrome driver")
+driver = webdriver.Chrome(service=service_obj)
+-> proxy 크롬 드라이버가 실재 크롬 드라이버 path로 가서 크롬을 실행시킨다
+
+현재 컴퓨터에 깔려있는 크롬브라우저와 같은 버전의 크롬 드라이버를 다운받아놓고 해당 경로를 Service 안에 넣어줬다
+
 “chromedriver” can’t be opened because Apple cannot check it for malicious software.
 ->
 The error message "“chromedriver” can't be opened because Apple cannot check it for malicious software" is a security feature on macOS called Gatekeeper. Gatekeeper prevents the execution of applications that are not from identified developers or have not been notarized by Apple.
-
 To resolve this issue, you can follow these steps:
-
 Open the "System Preferences" on your Mac.
 Click on "Security & Privacy."
 In the "General" tab, you should see a message stating that "chromedriver" was blocked from opening.
 Click on the "Open Anyway" button next to the message. You might need to enter your administrator password to authorize the change.
 A confirmation prompt will appear, click "Open" to confirm and allow the "chromedriver" to run.
 After completing these steps, you should be able to run the "chromedriver" without encountering the Gatekeeper error. However, please ensure that you download the "chromedriver" from a trusted source to ensure its integrity and security.
+
+
+강의 셀레니움 코드 예시
+service_obj = Service("/Users/jake/web_brower_drivers/chromedriver_mac_arm64/chromedriver")
+driver = webdriver.Chrome(service=service_obj)
+driver.get("https://rahulshettyacademy.com/")  #get method to hit url on  browser
+
+print(driver.title)
+print(driver.current_url)
+
+driver.get("https://rahulshettyacademy.com/AutomationPractice/")
+driver.maximize_window()
+driver.minimize_window()
+driver.back()
+driver.refresh()
+driver.forward()
+driver.close()
+
+-> we can work on browser's top level tool bar events
+
