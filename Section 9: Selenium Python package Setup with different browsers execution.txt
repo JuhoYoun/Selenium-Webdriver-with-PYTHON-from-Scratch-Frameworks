@@ -20,6 +20,12 @@ After completing these steps, you should be able to run the "chromedriver" witho
 
 
 강의 셀레니움 코드 예시
+
+from selenium import webdriver
+from selenium.webdriver.chrome.service import Service
+
+#################### Chrome ##############################
+
 service_obj = Service("/Users/jake/web_brower_drivers/chromedriver_mac_arm64/chromedriver")
 driver = webdriver.Chrome(service=service_obj)
 driver.get("https://rahulshettyacademy.com/")  #get method to hit url on  browser
@@ -35,5 +41,37 @@ driver.refresh()
 driver.forward()
 driver.close()
 
--> we can work on browser's top level tool bar events
+###################### Firefox #############################
+service_obj = Service("path of geckodriver")
+driver = webdriver.Firefox(service=service_obj)
+driver.get("https://rahulshettyacademy.com/")  #get method to hit url on  browser
+
+print(driver.title)
+print(driver.current_url)
+
+driver.get("https://rahulshettyacademy.com/AutomationPractice/")
+driver.maximize_window()
+driver.minimize_window()
+driver.back()
+driver.refresh()
+driver.forward()
+driver.close()
+############################################################
+
+###################### MS Edge #############################
+service_obj = Service("path of msedgedriver")
+driver = webdriver.Edge(service=service_obj)
+driver.get("https://rahulshettyacademy.com/")  #get method to hit url on  browser
+
+print(driver.title)
+print(driver.current_url)
+
+driver.get("https://rahulshettyacademy.com/AutomationPractice/")
+driver.maximize_window()
+driver.minimize_window()
+driver.back()
+driver.refresh()
+driver.forward()
+driver.close()
+############################################################
 
