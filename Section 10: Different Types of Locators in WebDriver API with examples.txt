@@ -44,4 +44,22 @@ driver.find_element(By.XPATH, "(//input[@type='text'])[3]").clear()
 
 강의 코드 
 
+from selenium import webdriver
+from selenium import webdriver
+from selenium.webdriver.chrome.service import Service
+from selenium.webdriver.common.by import By
+import time
+
+service_obj = Service("/Users/jake/web_brower_drivers/chromedriver_mac_arm64/chromedriver")
+driver = webdriver.Chrome(service=service_obj)
+driver.get("https://rahulshettyacademy.com/client/")  
+driver.find_element(By.LINK_TEXT, "Forgot password?").click()
+# driver.find_element(By.PARTIAL_LINK_TEXT, "Forgot").click()
+driver.find_element(By.XPATH, "//form/div[1]/input").send_keys("mattytomsa@gmail.com")
+driver.find_element(By.CSS_SELECTOR, "form div:nth-child(2) input").send_keys("123456") # same as xpath //form/div[2]/input
+driver.find_element(By.CSS_SELECTOR, "#confirmPassword").send_keys("123456") 
+# driver.find_element(By.XPATH, "//button[@type='submit']").click()
+driver.find_element(By.XPATH, "//button[text()='Save New Password']").click() # linktext 처럼 a 태그가 아닌 다른 태그로 감싸진 text를 이용해서 locate할 수 있다
+
+
 
