@@ -1,1 +1,5 @@
+Selenium supports multiple ways to identify the elements : ID, Xpath, CSS Selector, Class name, Name, Link text .....
+ID, class name, name 등은 엘리먼트에 따라서 해당 엘리먼트를 찾을 때 사용할 수 있지도 아닐수도 있다 (만약 해당 엘리먼트가 ID 가 없다면 못쓰는거다) 하지만 Xpath와 CSS Selector는 어떤 엘리먼트인지 locate 하는데 쓸 수 있다
+
+
 
