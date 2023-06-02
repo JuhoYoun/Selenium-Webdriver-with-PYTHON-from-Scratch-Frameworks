@@ -1,1 +1,12 @@
+“chromedriver” can’t be opened because Apple cannot check it for malicious software.
+->
+The error message "“chromedriver” can't be opened because Apple cannot check it for malicious software" is a security feature on macOS called Gatekeeper. Gatekeeper prevents the execution of applications that are not from identified developers or have not been notarized by Apple.
 
+To resolve this issue, you can follow these steps:
+
+Open the "System Preferences" on your Mac.
+Click on "Security & Privacy."
+In the "General" tab, you should see a message stating that "chromedriver" was blocked from opening.
+Click on the "Open Anyway" button next to the message. You might need to enter your administrator password to authorize the change.
+A confirmation prompt will appear, click "Open" to confirm and allow the "chromedriver" to run.
+After completing these steps, you should be able to run the "chromedriver" without encountering the Gatekeeper error. However, please ensure that you download the "chromedriver" from a trusted source to ensure its integrity and security.
