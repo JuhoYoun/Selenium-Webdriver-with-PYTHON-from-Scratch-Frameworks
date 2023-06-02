@@ -1,4 +1,4 @@
-Selenium supports multiple ways to identify the elements : ID, Xpath, CSS Selector, Class name, Name, Link text
+Selenium supports multiple ways to identify the elements : ID, Xpath, CSS Selector, Class name, Name, Link text(a 태그 안에 있는 텍스트)
 ID, class name, name 등은 엘리먼트에 따라서 해당 엘리먼트를 찾을 때 사용할 수 있지도 아닐수도 있다 (만약 해당 엘리먼트가 ID 가 없다면 못쓰는거다) 하지만 Xpath와 CSS Selector는 어떤 엘리먼트인지 locate 하는데 쓸 수 있다
 
 xpath
@@ -13,9 +13,35 @@ XPath 표현식에서 //는 현재 노드에서 시작하여 문서의 어떤 �
 따라서, //는 문서 전체를 대상으로 요소를 선택하는 것이고, /는 루트 요소부터 시작하여 요소를 선택하는 것입니다.
 
 CSS Selector
-tagname[arrtibute='value'] -> input[type='submit']
+tagname[arrtibute='value'] -> input[type='submit'], #id, .class
 
 Chrome plugin - selectorshub
 이 플러그인을 깔면 개발자도구창에서 엘리먼트의 css selector나 xpath를 더 쉽게 볼 수 있다
+
+강의 코드
+from selenium import webdriver
+from selenium import webdriver
+from selenium.webdriver.chrome.service import Service
+from selenium.webdriver.common.by import By
+import time
+
+
+service_obj = Service("/Users/jake/web_brower_drivers/chromedriver_mac_arm64/chromedriver")
+driver = webdriver.Chrome(service=service_obj)
+driver.get("https://rahulshettyacademy.com/angularpractice/")  
+
+driver.find_element(By.NAME, "email").send_keys("juho.youn.work@gmail.com")
+driver.find_element(By.ID, "exampleInputPassword1").send_keys("123455")
+driver.find_element(By.ID, "exampleCheck1").click()
+driver.find_element(By.CSS_SELECTOR, "input[name='name']").send_keys("Jake")
+driver.find_element(By.CSS_SELECTOR, "#inlineRadio1").click()
+driver.find_element(By.XPATH, "//input[@type='submit']").click()
+message = driver.find_element(By.CLASS_NAME, "alert-success").text
+print(message)
+assert "Success" in message
+driver.find_element(By.XPATH, "(//input[@type='text'])[3]").send_keys("Hello Again")
+driver.find_element(By.XPATH, "(//input[@type='text'])[3]").clear()
+
+강의 코드 
 
 
