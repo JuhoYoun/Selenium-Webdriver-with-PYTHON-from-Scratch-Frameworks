@@ -1,1 +1,137 @@
+강의 코드
 
+from selenium import webdriver
+from selenium.webdriver.chrome.service import Service
+from selenium.webdriver.common.by import By
+from selenium.webdriver.support.select.Select import Select
+import time
+
+
+service_obj = Service("/Users/jake/web_brower_drivers/chromedriver_mac_arm64/chromedriver")
+driver = webdriver.Chrome(service=service_obj)
+driver.get("https://rahulshettyacademy.com/angularpractice/")  
+
+driver.find_element(By.NAME, "email").send_keys("juho.youn.work@gmail.com")
+driver.find_element(By.ID, "exampleInputPassword1").send_keys("123455")
+driver.find_element(By.ID, "exampleCheck1").click()
+driver.find_element(By.CSS_SELECTOR, "input[name='name']").send_keys("Jake")
+driver.find_element(By.CSS_SELECTOR, "#inlineRadio1").click()
+
+# static dropdown
+dropdown = Select(driver.find_element(By.ID,"exampleFormContorlSelect1"))
+dropdown.select_by_index(1)
+dropdown.select_by_visible_text("Female")
+# dropdown.select_by_value() # 해당 웹사이트 예제에는 옵션(태그)에 밸류가 없어서 못쓰지만 있는경우 이 메소드를 사용할 수 있다 
+# static dropdown : 드랍다운 선택 옵션이 정해져있다
+# dynamic dropdown aka suggestive dropdown : 드랍다운 선택 옵션이 유동적이다 예를 들어 input칸이 있어 A를 치면 밑에 A로 시작하는 옵션들이 나온다
+# static dropdown html 을 보면 select 태그 안에 여러개의 option 태그가 있다 
+# If you see select tag, that means go ahead with select class to handle the options in that dropdown
+
+driver.find_element(By.XPATH, "//input[@type='submit']").click()
+message = driver.find_element(By.CLASS_NAME, "alert-success").text
+print(message)
+assert "Success" in message
+driver.find_element(By.XPATH, "(//input[@type='text'])[3]").send_keys("Hello Again") #3은 세번째 
+driver.find_element(By.XPATH, "(//input[@type='text'])[3]").clear()
+
+time.sleep(10)
+
+강의 코드
+
+from selenium import webdriver
+from selenium.webdriver.chrome.service import Service
+from selenium.webdriver.common.by import By
+from selenium.webdriver.support.select import Select
+import time
+
+service_obj = Service("/Users/jake/web_brower_drivers/chromedriver_mac_arm64/chromedriver")
+driver = webdriver.Chrome(service=service_obj)
+driver.get("https://rahulshettyacademy.com/dropdownsPractise/")  
+# auto suggest dropdowns
+driver.find_element(By.ID, "autosuggest").send_keys("ind") # auto suggest dropdown input에 입력 
+time.sleep(2) # 해당 입력값을 토대로 auto suggest 하는 시간을 벌어준다 
+countries = driver.find_elements(By.CSS_SELECTOR, "li[class='ui-menu-item'] a")
+print(len(countries))
+
+# Inida 와 매칭되는 suggestion을 찾아 클릭해준다 그러면  auto suggest dropdown input에 India 라고 입력된것이 브라우저에 보인다
+for country in countries:
+    if country.text == "India":
+        country.click()
+        break
+
+# India라고 입력된 것이 브라우저에 보였다 그럼 해당 엘리먼트의 텍스트를 출력하면 India 라고 나와야할것이다 하지만 이렇게 출력해보니 아무것도 나오지 않는다
+# 왜냐하면 처음에 브라우저에서 html을 처음 웹브라우저 로드 할 때 html 코드에는 해당 input 태그의 value가 없기 때문이다 여기에 India라고 
+# 써줘도 html 코드에서 해당 input의 value가 바뀌지 않는다
+# .text는 엘리먼트의 텍스트를 반환한다 But that should be pre-built when the site is loaded for the first time
+print(driver.find_element(By.ID, "autosuggest").text)
+
+# 이 경우 .text 말고 .get_attribute를 쓰자 그런데 개발자 도구를 보면 내가 India를 입력했을 때 value 값도 변하지 않는데... 그래도 이 경우는 가능한가보다
+print(driver.find_element(By.ID, "autosuggest").get_attribute("value"))
+
+assert driver.find_element(By.ID, "autosuggest").get_attribute("value") == "India"
+
+강의 코드
+
+
+from selenium import webdriver
+from selenium.webdriver.chrome.service import Service
+from selenium.webdriver.common.by import By
+from selenium.webdriver.support.select import Select
+import time
+
+# How to handle checkboxes, radio buttons
+
+service_obj = Service("/Users/jake/web_brower_drivers/chromedriver_mac_arm64/chromedriver")
+driver = webdriver.Chrome(service=service_obj)
+driver.get("https://rahulshettyacademy.com/AutomationPractice/")  
+
+# id, value, name 으로 찾을수도 있는데 이 세개가 없다고 가정하고 해보자
+checkboxes = driver.find_elements(By.XPATH, "//input[@type='checkbox']")
+print(len(checkboxes))
+
+for checkbox in checkboxes:
+    if checkbox.get_attribute("value") == "option2":
+        checkbox.click()
+        assert checkbox.is_selected()
+        
+
+radiobuttons = driver.find_elements(By.CSS_SELECTOR, ".radioButton")
+radiobuttons[2].click()
+assert radiobuttons[2].is_selected()
+
+assert driver.find_element(By.ID, "displayed-text").is_displayed()
+driver.find_element(By.ID, "hide-textbox").click()
+assert not driver.find_element(By.ID, "displayed-text").is_displayed()
+
+time.sleep(10)
+
+강의 코드 
+
+from selenium import webdriver
+from selenium.webdriver.chrome.service import Service
+from selenium.webdriver.common.by import By
+from selenium.webdriver.support.select import Select
+import time
+
+# Handling Java / Javascript alert popups
+# Selenium only automates on html related browers 자바나 자바스크립트 팝업창은 html이 아니므로 셀레니움이 inspect 할 수 없다
+# 하지만 셀레니움에서는 해결 방법을 제시한다 
+# Selenium 을 browser mode (html) 에서 alert mode로 바꾸면 팝업창에 대한 정보를 얻을 수 있다
+
+service_obj = Service("/Users/jake/web_brower_drivers/chromedriver_mac_arm64/chromedriver")
+driver = webdriver.Chrome(service=service_obj)
+driver.get("https://rahulshettyacademy.com/AutomationPractice/")  
+
+name = "Jake"
+driver.find_element(By.CSS_SELECTOR, "#name").send_keys(name)
+driver.find_element(By.ID, "alertbtn").click()
+
+# switch from browser mode to alert mode
+alert = driver.switch_to.alert # 이제 alert 가 driver object 이다 alert object은 alert에만 focus하고 browser level에 focus하지 않는다
+alertText = alert.text # grab the text which is present in the alert
+print(alertText)
+assert name in alertText
+alert.accept() # accept is a method which will help you to click on Ok button
+# alert.dismiss() # click on Cancel button  예제의 팝업창에는 cancel 버튼이 없었는데도 이 코드가 있으면 마치 cancel 버튼이 있고 이를 누른거처럼 팝업창이 꺼졌다... 흠
+
+time.sleep(10)
