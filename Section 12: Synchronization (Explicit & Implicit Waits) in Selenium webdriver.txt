@@ -1,10 +1,22 @@
 implicit wait vs explicit wait
-time.sleep(2) -> 이렇게 time.sleep()을 사용하는것은 권장되지 않는다 대신 셀레니움에서 제공하는 wait 기능을 사용한다
+time.sleep(5) -> 이렇게 time.sleep()을 사용하는것은 권장되지 않는다 대신 셀레니움에서 제공하는 wait 기능을 사용한다
 
 Implicit wait is more like global time out. On top of script, you will declare a global timeout
-driver.implicitly_wait(5) -> this is the global timeout to the script
+
+service_obj = Service("/Users/jake/web_brower_drivers/chromedriver_mac_arm64/chromedriver")
+driver = webdriver.Chrome(service=service_obj)
+driver.implicitly_wait(5) -> this is the global timeout to the script 이렇게 웹드라이버를 생성할 때 바로 global timeout을 설정해주면 그 밑에 모든 라인에 wait이 적용된다
+-> this implicit wait in global applies to each and every in the code below
+
 If any element is not shown on the page, it will wait a max of 5 seconds for that to show up. 
 So 5 seconds is max timeout. So if that element is just displayed in 2 seconds, then immediately it identifies that and proceeds
+
+즉 원하는 웹 엘리먼트를 2초 안에 찾게되면 5초까지 기다리지 않고 3초를 절약할 수 있다 time.sleep(5) 이 경우는 무조건 5초를 기다려야한다
+
+그러면 implicit wait을 설정해놓으면 그 다음부터는 time.sleep()을 쓸 필요가 없을까?
+exception이 하나 있다! find_elements 를 사용할 때다 find_elements는 웹 엘리먼트가 아니라 리스트를 반환한다 만약 찾으려는 엘리먼트들이 아직 생성되지 않아 셀레니움이
+해당 엘리먼트들을 찾지 못해 empty list를 반환해도 셀레니움 입장에서는 empty list도 list니까 valid하다 라고 생각해버린다 그래서 implicit wait을 설정했어도 기다리지 않고
+empty list를 반환하고 진행하는 것이다 이럴 때는 time.sleep()을 써야한다
 
 chaining in selenium
 find_element 로 얻은 element object에 .find_element 로 그 안에서 또 locate을 할 때 이걸 chaining 이라고 한다
