@@ -1,1 +1,3 @@
+implicit wait vs explicit wait
 
+chaining in selenium
