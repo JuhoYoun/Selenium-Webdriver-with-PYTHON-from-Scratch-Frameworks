@@ -22,7 +22,7 @@ Explicit Wait
 어떤 하나의 웹엘리먼트가 생성되는데 최대 15초가 걸린다고 하자 implicit wait으로 15초를 설정하는것은 너무 비효율 적이다 
 
 wait = WebDriverWait(driver, 15)
-wait.until(expected_conditions.presence_of_element_located(By.CSS_SELECTOR,".promoInfo"))
+wait.until(expected_conditions.presence_of_element_located((By.CSS_SELECTOR,".promoInfo")))
 print(driver.find_element(By.CLASS_NAME,"promoInfo").text)
 
 이렇게 print(driver.find_element(By.CLASS_NAME,"promoInfo").text) 앞에 .promoInfo 해당하는 엘리먼트가 나올 때 까지 기다리도록 explicit wait을 설정했다 
