@@ -1,3 +1,4 @@
 implicit wait vs explicit wait
 
 chaining in selenium
+find_element 로 얻은 element object에 .find_element 로 그 안에서 또 locate을 할 때 이걸 chaining 이라고 한다
