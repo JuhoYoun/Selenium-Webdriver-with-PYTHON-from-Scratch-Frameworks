@@ -18,5 +18,16 @@ exception이 하나 있다! find_elements 를 사용할 때다 find_elements는 
 해당 엘리먼트들을 찾지 못해 empty list를 반환해도 셀레니움 입장에서는 empty list도 list니까 valid하다 라고 생각해버린다 그래서 implicit wait을 설정했어도 기다리지 않고
 empty list를 반환하고 진행하는 것이다 이럴 때는 time.sleep()을 써야한다
 
+Explicit Wait
+어떤 하나의 웹엘리먼트가 생성되는데 최대 15초가 걸린다고 하자 implicit wait으로 15초를 설정하는것은 너무 비효율 적이다 
+
+wait = WebDriverWait(driver, 15)
+wait.until(expected_conditions.presence_of_element_located(By.CSS_SELECTOR,".promoInfo"))
+print(driver.find_element(By.CLASS_NAME,"promoInfo").text)
+
+이렇게 print(driver.find_element(By.CLASS_NAME,"promoInfo").text) 앞에 .promoInfo 해당하는 엘리먼트가 나올 때 까지 기다리도록 explicit wait을 설정했다 
+이러면 이 explicit wait은 wait.until(expected_conditions.presence_of_element_located(By.CSS_SELECTOR,".promoInfo")) 이 라인이 실행될 때 
+implicit wait을 오버라이드한다 그리고 implicit wait도 마찬가지로 15초 전에 엘리먼트를 찾으면 더 이상 기다리지 않고 다음 라인으로 진행한다
+
 chaining in selenium
 find_element 로 얻은 element object에 .find_element 로 그 안에서 또 locate을 할 때 이걸 chaining 이라고 한다
