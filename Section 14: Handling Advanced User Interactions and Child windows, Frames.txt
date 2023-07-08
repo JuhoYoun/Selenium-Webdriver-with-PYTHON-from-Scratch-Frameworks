@@ -28,6 +28,6 @@ What are frames and techniques to handle with
 
 Frame is embedded html which sits top over your base html. Though they look like they are part of the page, but they are actually not. That piece of the component what we call as a frame, that is another page but we just embedded that into the our parent base html. So that is not local to the html page.
 Because frame is a separate entity to local base html, driver does not have access to it. You need to switch your driver to frames mode.
-How to locate iframe in html? -> Find iframe tag
+How to know where frame is?  -> Find iframe tag
 
 
