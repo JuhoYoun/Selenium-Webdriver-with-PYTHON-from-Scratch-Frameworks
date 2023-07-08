@@ -1,1 +1,10 @@
+Mouse Interactions in Selenium
 
+Mouse Hover - 마우스 커서를 웹 엘리먼트에 갖다 댐 
+
+There is a class called ActionChains in Selenium which will help us to do that
+action = ActionChains(driver)
+Using this object, it will be able to perform all those interactions
+
+ex)
+action.click_and_hold(web element) -> long press
