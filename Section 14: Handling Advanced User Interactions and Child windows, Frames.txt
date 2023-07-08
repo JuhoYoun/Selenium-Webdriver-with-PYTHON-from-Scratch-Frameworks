@@ -8,3 +8,10 @@ Using this object, it will be able to perform all those interactions
 
 ex)
 action.click_and_hold(web element) -> long press
+action.context_click(web element) -> right click
+action.double_click(web element) -> double click
+action.drag_and_drop(source, target) -> Holds down the left mouse button on the source element, then moves to the target element and release the mouse button
+action.move_to_element(web element) -> just move mouse to that particular element
+
+action.move_to_element(driver.find_element(By.ID,"mousehover")).perform() -> 이렇게 마지막에 .perform() 해줘야 실행된다
+
