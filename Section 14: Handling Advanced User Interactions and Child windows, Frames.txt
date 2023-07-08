@@ -15,3 +15,11 @@ action.move_to_element(web element) -> just move mouse to that particular elemen
 
 action.move_to_element(driver.find_element(By.ID,"mousehover")).perform() -> 이렇게 마지막에 .perform() 해줘야 실행된다
 
+
+How to handle child window using Selenium
+In Selenium, opening a new window and opening a new tab is the same. 
+새로운 윈도우나 탭이 열려 거기서 작업을 하고 싶을 때 Selenium cannot do directly that because the scope of Selenium web driver will be in the same tab which it has opened originally.
+-> Have to explicitly tell Selenium to switch to that child window which is open and then only the scope will be transferred to this child window.
+And if you want to perform any operations again and parent window again, you have to explicitly say to switch window to the back to parent and then only
+control of scope will be on parent.
+
