@@ -4,3 +4,7 @@ So using javascript you can manipulate anything on your browser.
 
 For example, selenium does not provide any specific method to scroll down the web page, but using javascript we can scroll down.
 셀레니움이 스크롤다운 하는 방법을 직접 제시하지는 않지만 자바스크립트를 사용할 수 있게 해 우리가 스스로 스크롤다운 하는 방법을 찾게 할 수 있다.
+
+웹브라우저에서 개발자 도구 -> 그리고 console에 들어가 보자 그리고 window.scrollTo(0,600) 이러면 숫자만큼 스크롤 된다 
+console에 window. 만 써도 가능한 많은 메소드가 나온다. 이런 자바스크립트 코드를 셀레니움 파이썬 코드에 inject 해서 사용할 수 있다
+스크롤다운을 많이 사용하는데 셀레니움 돌릴 때 엘리먼트가 아래에 있어서 테스트 실패하는 경우가 많아서란다. 
