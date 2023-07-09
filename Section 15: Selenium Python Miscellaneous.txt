@@ -1,0 +1,6 @@
+How to execute javascript on the browser using Python. There are some events which needs to be performed using javascript.
+All browsers are rendered based on javascript only. Chrome, Firefox... all there browsers are designed based on javascript.
+So using javascript you can manipulate anything on your browser.
+
+For example, selenium does not provide any specific method to scroll down the web page, but using javascript we can scroll down.
+셀레니움이 스크롤다운 하는 방법을 직접 제시하지는 않지만 자바스크립트를 사용할 수 있게 해 우리가 스스로 스크롤다운 하는 방법을 찾게 할 수 있다.
