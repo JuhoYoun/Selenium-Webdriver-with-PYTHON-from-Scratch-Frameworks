@@ -33,3 +33,9 @@ For example, sometimes entering website not using https requires additional step
 There is an option that allow us to enter any website not using https
 ->
 chrome_options.add_argument("--ignore-certificate-erros")
+
+
+How to sort the web tables using selenium python
+
+
+
