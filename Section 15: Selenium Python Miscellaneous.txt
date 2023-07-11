@@ -103,4 +103,7 @@ time.sleep(2)
 
 more options? -> https://www.programcreek.com/python/example/100025/selenium.webdriver.ChromeOptions
 
+--disable-ipv6    disable ipv6 connection
+window-size=1920x1080    open a window in a specific size
+--disable-gpu     can really improve preformance
 
