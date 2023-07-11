@@ -14,3 +14,8 @@ window.scrollBy(0, document.body.scrolHeight) -> Scroll the max height
 Execute javascript in python selenium -> driver.execute_script("window.scrollBy(0, document.body.scrolHeight);")
 
 스크린샷도 찍을 수 있다 -> driver.get_screenshot_as_file("screenshot.png")
+
+Headless mode vs Head mode
+When you run in the head mode, that means browser opens and you can see all the actions.
+When you run in the headless mode, you will not see the browser invocation (invisible)
+Headless mode is more faster.
