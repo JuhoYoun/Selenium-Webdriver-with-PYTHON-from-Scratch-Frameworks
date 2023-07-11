@@ -19,3 +19,17 @@ Headless mode vs Head mode
 When you run in the head mode, that means browser opens and you can see all the actions.
 When you run in the headless mode, you will not see the browser invocation (invisible)
 Headless mode is more faster.
+
+How to set headless mode
+->
+chrome_options = webdriver.ChromeOptions()
+chrome_options.add_argument("headless")
+
+service_obj = Service("/Users/jake/web_brower_drivers/chromedriver_mac_arm64/chromedriver")
+driver = webdriver.Chrome(service=service_obj, options=chrome_options)
+
+There are other options
+For example, sometimes entering website not using https requires additional steps (Browser gives warning and we need to click advanced then proceed..)
+There is an option that allow us to enter any website not using https
+->
+chrome_options.add_argument("--ignore-certificate-erros")
