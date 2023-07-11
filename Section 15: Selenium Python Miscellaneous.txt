@@ -18,7 +18,7 @@ Execute javascript in python selenium -> driver.execute_script("window.scrollBy(
 Headless mode vs Head mode
 When you run in the head mode, that means browser opens and you can see all the actions.
 When you run in the headless mode, you will not see the browser invocation (invisible)
-Headless mode is more faster.
+Headless mode is more faster, uses less memory
 
 How to set headless mode
 ->
@@ -70,5 +70,37 @@ assert browserSortedVeggies == originalBrowserSortedList
 webbrowser console에서 $x("//tr/td[1]") 이렇게 치면 해당 xpath와 일치하는 엘리먼트들의 리스트가 나온다
 
 
+
+
+
+
+Chrome options and importance
+강의 코드 그냥 보자
+from selenium import webdriver
+from selenium.webdriver.chrome.service import Service
+from selenium.webdriver.common.by import By
+from selenium.webdriver.support.select import Select
+from selenium.webdriver.support.ui import WebDriverWait
+from selenium.webdriver.support import expected_conditions
+from selenium.webdriver import ActionChains
+import time
+
+service_obj = Service("/Users/jake/web_brower_drivers/chromedriver_mac_arm64/chromedriver")
+
+chrome_options = webdriver.ChromeOptions()
+chrome_options.add_argument("--start-maximized")
+# chrome_options.add_argument("headless")
+chrome_options.add_argument("--ignore-certificate-errors")
+
+
+driver = webdriver.Chrome(service=service_obj, options=chrome_options)
+
+driver.get("https://rahulshettyacademy.com/angularpractice/")
+
+print(driver.title)
+
+time.sleep(2)
+
+more options? -> https://www.programcreek.com/python/example/100025/selenium.webdriver.ChromeOptions
 
 
