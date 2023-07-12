@@ -16,3 +16,7 @@ Pytest Testing Framework
 
 Pytest를 만들기 위해 pytestDemo 라는 패키지를 만들었다 그리고 먼저 test_demo1.py라는 파일을 만들었는데 pytest 패키지 안에 테스트 파일은 무조건 test_ 이렇게 시작하는것이 
 convention이라고 한다
+
+Now we are trying to write something in this testing framework standards to follow that standard. Whatever code you write, you have to write in that code in function as pytest standard. 
+
+Pytest framework에서는 모든 테스트를 function으로 진행한다
