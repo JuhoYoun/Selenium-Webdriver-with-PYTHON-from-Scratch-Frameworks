@@ -1,1 +1,11 @@
+Selenium Python Framework Design Plan
 
+Part 1 Pytest Unit Testing Framework
+
+Part 2 Understand Logging and HTML Reports
+
+Part 3 Implement Selenium Python Framework from Scratch (PageObject DesignPattern, Jenkin Integration topics are also included))
+
+Part 4 Data Driven framework with Excel to Selenium Python Tests
+
+Part 5 DIT Version Control
