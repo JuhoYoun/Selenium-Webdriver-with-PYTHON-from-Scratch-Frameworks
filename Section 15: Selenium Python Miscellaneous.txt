@@ -68,6 +68,7 @@ assert browserSortedVeggies == originalBrowserSortedList
 
 
 webbrowser console에서 $x("//tr/td[1]") 이렇게 치면 해당 xpath와 일치하는 엘리먼트들의 리스트가 나온다
+xpath말고 css로 할려면 x를 빼고 $(css expression) 이렇게 하면 된다 
 
 
 
