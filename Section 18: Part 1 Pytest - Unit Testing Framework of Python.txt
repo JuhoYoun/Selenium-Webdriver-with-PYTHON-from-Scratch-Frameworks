@@ -1,1 +1,13 @@
+Pytest Testing Framework
 
+- Install Pytest : pip install pytest
+- Naming conventions to follow for Pytest Tests
+- Running Pytests from command line and PyCharm
+- Running selected test files using pytest
+- Running selected test Methods based on maatching keywords
+- Pytest tags Mechanism to run tests based on functionality
+- Failing and Skipping tests with Annotations using Pytest
+- What are fixtures and importance of their Hooks in Pytest
+- How Fixtures can be configured in Conftest file for better readability
+- Different scopes of fixtures and their related annotations to setup Pre and Post conditions of the Test
+- How Parameterization can be achieved for Tests with multiple sets of data
