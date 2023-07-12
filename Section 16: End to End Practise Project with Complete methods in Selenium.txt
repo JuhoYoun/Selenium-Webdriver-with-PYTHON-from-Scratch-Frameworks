@@ -1,0 +1,4 @@
+걍 코드 보자~
+
+* //div[@class='card h-100']/div/button
+html이 만약 div[@class='card h-100'] 밑에 div가 두개 있고 둘 모두 child로 button를 가지고 있다면 위의 xpath는 첫번째 div/button을 의미한다 
