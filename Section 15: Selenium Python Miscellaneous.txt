@@ -107,3 +107,5 @@ more options? -> https://www.programcreek.com/python/example/100025/selenium.web
 window-size=1920x1080    open a window in a specific size
 --disable-gpu     can really improve preformance
 
+if you want to reroute all your actions like if you want to log in in the way that you are logging from another country
+-> proxy 들어가는거 찾아서 하자 강의랑 현재랑 웹사이트 예시가 달라서 똑같은걸 찾을 수 없다
