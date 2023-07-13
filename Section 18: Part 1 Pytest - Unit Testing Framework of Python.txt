@@ -107,3 +107,7 @@ py.test -k CreditCard -v -s    k stands for a specific regular expression
 
 py.test -m smoke -v -s    -> smoke 마크되 있는 테스트만 실행한다
 
+근데 강의에서 이렇게 마크를 이용해서 실행했더니 커스텀 마크인 smoke 마크를 configuration에 등록하라고 warning이 뜬다 이 부분은 나중에 설명한다고 한다 일단 이 등록하는건 mandatory가 아니다
+
+predefined mark도 있다 예를 들어 skip
+@pytest.mark.skip 이렇게 마크하고 py.test -v -s 해보자 그러면 skip으로 마크되어있는 테스트만 뻬고 모두 실행된다
