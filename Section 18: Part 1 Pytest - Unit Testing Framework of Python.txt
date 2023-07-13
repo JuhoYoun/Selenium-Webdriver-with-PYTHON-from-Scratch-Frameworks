@@ -97,3 +97,11 @@ Subscribe to our below YouTube channel for Automation Tidbits and many Miscellan
 
 YouTube : https://www.youtube.com/c/RahulShettyAcademy
 #####################
+
+How to run only one file in command line?
+-> py.test test_demo2.py -v -s
+
+
+py.test -k CreditCard -v -s    k stands for a specific regular expression  
+-> Test Case 이름 (메소드 이름)에 CreditCard 가 들어간 테스트들만 실행된다
+
