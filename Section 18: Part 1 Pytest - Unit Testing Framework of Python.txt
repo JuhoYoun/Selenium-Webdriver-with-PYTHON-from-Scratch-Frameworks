@@ -59,3 +59,41 @@ def test_firstProgram(setup):
 
 In pytest, every method is considered as 1 test case
 
+자 그르면 다음의 테스트를 실행해보자
+
+test_demo1.py
+
+def test_firstProgram(setup):
+    print("Hello")
+
+def test_SecondGreetCreditCard():
+    print("Good Morning")
+
+test_demo2.py
+
+def test_firstProgram():
+    msg = "Hello" #operations
+    assert msg == "Hi", "Test failed because strings do not match"
+
+이러면 1 failed 1 passed 라고 뜬다 test_demo2.py 의 test_firstProgram가 fail한걸 확인할 수 있는데 test_demo1.py에는 테스트 케이스가 두개있는데 Good Morning만 출력되고
+1 passed 만 확인된다 -> In pytest, you cannot have multiple test method names with the same names. If you have that, it will override previous results.
+다른 파일에 있다면 메소드 이름이 같아도 상관 없는거 같다
+
+##############
+Stay Connected to Testing Updates
+Do you want to stay updated with the latest Automation Technologies/Updates/Jobs happening in Testing Industry?
+
+Are you curious to know the Best Practices what others Use in their companies for Software Testing??
+
+Get Social with us in LinkedIn, Facebook and Youtube see what other QA Peers are talking about on their experiences. You can have your general questions too and get suggestions from the Strongest QA Community Base
+
+LinkedIn : https://www.linkedin.com/in/rahul-shetty-trainer/
+
+FB QA Group : https://www.facebook.com/groups/RahulShettyAcademy/
+
+
+
+Subscribe to our below YouTube channel for Automation Tidbits and many Miscellaneous Important QA General topics which needed for Real time projects.
+
+YouTube : https://www.youtube.com/c/RahulShettyAcademy
+#####################
