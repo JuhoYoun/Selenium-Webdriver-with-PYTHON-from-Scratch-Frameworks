@@ -19,4 +19,23 @@ convention이라고 한다
 
 Now we are trying to write something in this testing framework standards to follow that standard. Whatever code you write, you have to write in that code in function as pytest standard. 
 
-Pytest framework에서는 모든 테스트를 function으로 진행한다
+Pytest framework에서는 모든 테스트를 function으로 진행한다 function 이름도 test_로 시작하자
+
+
+How to run pytest? Pycharm or command line
+
+Pycharm
+기본 파이참 설정대로 테스트 파일을 run 하면 pycharm은 pytest를 인식하지 못하고 그냥 파이썬 스크립트 실행하듯이 실행한다
+파이참을 사용해서 pytest로 실행할 수 있다
+interpreter 아이콘을 클릭하고 Edit Configuration을 눌러 Run/Debug Configurations 창으로 가자 +를 눌러 Python tests -> pytest를 선택한다 그리고 ok를 누른다
+그리고 If you want to give what exactly you want to run, ok를 누르기 전에 Target을 Script Path로 설정해놓고 실행하고 싶은 테스트 파일을 선택한다 그리고 Run 아이콘을 누른다
+
+# Any pytest file should start with test_ or end with _test
+#pytest method names should start with test
+#Any code should be wrapped in method only
+
+위에 convention을 지키지 않으면 pytest가 해당 메소드나 파일을 테스트로 인식하지 않는것 같다
+
+
+
+
