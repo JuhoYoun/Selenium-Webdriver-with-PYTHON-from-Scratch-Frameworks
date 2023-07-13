@@ -105,3 +105,5 @@ How to run only one file in command line?
 py.test -k CreditCard -v -s    k stands for a specific regular expression  
 -> Test Case 이름 (메소드 이름)에 CreditCard 가 들어간 테스트들만 실행된다
 
+py.test -m smoke -v -s    -> smoke 마크되 있는 테스트만 실행한다
+
