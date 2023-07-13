@@ -111,3 +111,18 @@ py.test -m smoke -v -s    -> smoke 마크되 있는 테스트만 실행한다
 
 predefined mark도 있다 예를 들어 skip
 @pytest.mark.skip 이렇게 마크하고 py.test -v -s 해보자 그러면 skip으로 마크되어있는 테스트만 뻬고 모두 실행된다
+
+@pytest.mark.xfail  이 마크를 달고 있다면? 그 테스트를 실행하지만 테스트 결과를 리포트에 반영하지 않는다 
+예를들어 이 테스트에는 버그가 있어서 무조건 fail하게 되어있다 그런데 이 테스트 안에 어떤 operation이 다른 테스트 케이스를 진행함에 있어서 미리 실행되어야하는 과정이라고 하자 
+그러면 skip마크를 쓰면 안된다 skip 마크를 쓰면 이 테스트를 실행하지 않아 해당 operation이 실행되지 않고 뒤의 테스트 케이스를 실행함에 있어서도 영향을 미치기 때문이다
+이 때 xfail을 쓰면 테스트를 실행을 하되 아 테스트가 성공했는지 실패했는지 여부를 리포트에 반영하지 않는것이다
+
+
+What are fixtures and their importance in pytest framework
+
+
+
+
+
+
+
