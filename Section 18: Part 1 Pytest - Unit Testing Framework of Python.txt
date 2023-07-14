@@ -148,6 +148,11 @@ you can create fixtures anywhere beginning or end of code
 
 
 
+Importance of conftest file & scope of fixtures for building generic fixtures
+
+pytest 패키지 디렉토리 안에 conftest.py를 만들어놓고 거기에 fixture를 define해 놓자 그러면 이 fixture는 같은 디렉토리에 있는 테스트 파일들 안에서 따로 declare하지 않아도 
+fixture로 쓸 수 있다 자주 쓰는 fixture를 conftest.py에 선언해놓으면 매 파일마다 똑같은 fixture를 선언해놀 필요가 없다
+
 
 
 
