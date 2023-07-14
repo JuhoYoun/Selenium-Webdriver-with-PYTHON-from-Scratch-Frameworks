@@ -120,6 +120,8 @@ predefined mark도 있다 예를 들어 skip
 
 What are fixtures and their importance in pytest framework
 테스트가 실행되기 전 우선적으로 실행되거나 테스트 마지막에 실행되어야하는 과정 
+In selenium framework, fixture is used for openning up browser or setting up some database instances, creating some configuration properties, 
+environment variables... etc
 
 @pytest.fixture()
 def setup():
@@ -141,10 +143,6 @@ def test_fixtureDemo(setup)
 
 위의 코드에서 test_fixtureDemo가 테스트가 실행될 때면 yield 이전의 print("I will be executing first") 가 먼저 실행되고 test_fixtureDemo 테스트가 실행된다 
 그 다음에 yield의 print("I will execute last")가 실행된다
-
-
-
-
 
 you can create fixtures anywhere beginning or end of code
 
