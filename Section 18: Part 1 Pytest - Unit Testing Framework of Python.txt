@@ -119,6 +119,18 @@ predefined mark도 있다 예를 들어 skip
 
 
 What are fixtures and their importance in pytest framework
+테스트가 실행되기 전 우선적으로 실행되거나 테스트 마지막에 실행되어야하는 과정 
+
+@pytest.fixture()
+def setup():
+    print("I will be executing first")
+
+def test_fixtureDemo(setup)
+    print("I will execute steps in fixtureDemo method")
+
+
+
+you can create fixtures anywhere beginning or end of code
 
 
 
