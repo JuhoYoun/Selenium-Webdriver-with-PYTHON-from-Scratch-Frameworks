@@ -142,7 +142,7 @@ def test_fixtureDemo(setup)
     print("I will execute steps in fixtureDemo method")
 
 위의 코드에서 test_fixtureDemo가 테스트가 실행될 때면 yield 이전의 print("I will be executing first") 가 먼저 실행되고 test_fixtureDemo 테스트가 실행된다 
-그 다음에 yield의 print("I will execute last")가 실행된다
+그 다음에 yield의 print("I will execute last")가 실행된다 이런식으로 테스트가 끝날 때 브라우저를 닫거나 쿠키를 지우거나등을 동작을 할 수 있다
 
 you can create fixtures anywhere beginning or end of code
 
