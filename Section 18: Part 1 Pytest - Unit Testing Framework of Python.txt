@@ -187,6 +187,24 @@ def setup():
 
 
 
+Data driven fixtures to load data into tests
 
+conftest.py
+@pytest.fixture()
+def dataLoad():
+    print("user profile data is being created")
+    return ["Rahul","Shetty","rahulshettyacademy.com"]
+
+테스트파일
+@pytest.mark.usefixtures("dataLoad")
+class TestExample2(BaseClass):
+
+    def test_editProfile(self, dataLoad):
+        print(dataLoad)
+        print(dataLoad[2])
+
+dataLoad fixture가 리스트를 린턴하고 있다 이 리스트는 dataLoad 태그가 달려있는 클래스나 메소드에서 dataLoad 라는 이름으로 사용할 수 있다 
+print(dataLoad) 에는 전체 리스트가 출력되고 print(dataLoad[2])에는 세번째 엘리먼트가 출력된다 
+print(dataLoad[2]) 태그가 붙은 클래스 내의 메소드라고 dataLoad가 argument로 들어가 있어야 이렇게 쓸 수 있다
 
 
