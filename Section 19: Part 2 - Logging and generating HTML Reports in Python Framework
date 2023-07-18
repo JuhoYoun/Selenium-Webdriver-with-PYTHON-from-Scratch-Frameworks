@@ -31,11 +31,11 @@ def test_loggingDemo():
 
 import logging -> 파이썬 설치할 때 기본적으로 같이 설치되는 패키지이다
 
-log의 기본 포맷인
+log의 포멧이 예를들어 
 2019-2-16 12:01:01, 798 (datetime) : ERROR (Log Level) : <testcase name> : message
 
-이 정도 되는거같다 여기서 testcase name에 들어가는 파일명 이름을 위해
-logger = logging.getLogger(__name__)  이 라인이 필요하다 
+이 정도 된다면 여기서 testcase name에 들어가는 파일명 이름을 위해
+logger = logging.getLogger(__name__)  이 라인이 필요하다 만약 이렇게 __name__을 안넣으면 디폴트로 route로 들어간다는데 뭔 말인지 모르겠다
 
-
+logging의 FileHandler 객체는 어떤 파일에 로그를 남길건지를 정하고 FileHandler를 addHandler에 넘긴다
 
