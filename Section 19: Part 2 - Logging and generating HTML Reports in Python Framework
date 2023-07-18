@@ -1,1 +1,7 @@
+Levels of Logs
 
+DEBUG
+INFO
+WARNING - 에러는 아니지만 경고 
+ERROR - 에러
+CRITICAL - 전체 framework를 멈춰버릴만큼 큰 문제
