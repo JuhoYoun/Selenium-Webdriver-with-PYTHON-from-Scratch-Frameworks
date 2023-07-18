@@ -208,3 +208,22 @@ print(dataLoad) 에는 전체 리스트가 출력되고 print(dataLoad[2])에는
 print(dataLoad[2]) 태그가 붙은 클래스 내의 메소드라고 dataLoad가 argument로 들어가 있어야 이렇게 쓸 수 있다
 
 
+
+Parameterizing test with multiple data sets using Fixtures
+We will see how to run this test case with multiple set of data in multiple rounds
+
+@pytest.fixture(params=[("chrome","Rahul","shetty"), ("Firefox","shetty"), ("IE","SS")])
+def crossBrowser(request):
+    return request.param
+
+def test_crossBrowser(crossBrowser):
+    print(crossBrowser[1])
+
+이 fixture를 보자 params에 tuple이 3개 있다 때문에 이 fixture 를 쓰는 테스트를 실행할 때 테스트를 3번 돈다 첫번째는 ("chrome","Rahul","shetty") 이 데이터를 
+테스트할 때 보내주고 마지막에는 ("IE","SS") 이 데이터를 보내주게 되어있다
+
+
+Generating HTML reports for Pytest Testcases
+pytest-html official -> https://pypi.org/project/pytest-html/
+py.test 를 실행할 때 flag로 pytest --html=report.html  이런식으로 쓰면 된다 물론 다른 플래그들이랑 같이 써도 된다 강의 때랑 지금이랑 pytest-html이 많이 바뀐거같다
+https://pytest-html.readthedocs.io/en/latest/user_guide.html#creating-a-self-contained-report  여기 보면 플레그 옵션이 많다
