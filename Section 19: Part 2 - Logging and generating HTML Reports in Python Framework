@@ -6,4 +6,36 @@ WARNING - 에러는 아니지만 경고
 ERROR - 에러
 CRITICAL - 전체 framework를 멈춰버릴만큼 큰 문제
 
+#######
+import logging
+
+
+def test_loggingDemo():
+    logger = logging.getLogger(__name__)
+
+    fileHandler = logging.FileHandler('logfile.log')
+    formatter = logging.Formatter("%(asctime)s :%(levelname)s : %(name)s :%(message)s")
+    fileHandler.setFormatter(formatter)
+
+    logger.addHandler(fileHandler)  #filehandler object
+
+    logger.setLevel(logging.CRITICAL)
+    logger.debug("A debug statement is executed")
+    logger.info("Information statement")
+    logger.debug("A debug statement is executed")
+    logger.warning("Something is in warning mode")
+    logger.error("A Major error has happend")
+    logger.critical("Critical issue")
+
+###############
+
 import logging -> 파이썬 설치할 때 기본적으로 같이 설치되는 패키지이다
+
+log의 기본 포맷인
+2019-2-16 12:01:01, 798 (datetime) : ERROR (Log Level) : <testcase name> : message
+
+이 정도 되는거같다 여기서 testcase name에 들어가는 파일명 이름을 위해
+logger = logging.getLogger(__name__)  이 라인이 필요하다 
+
+
+
