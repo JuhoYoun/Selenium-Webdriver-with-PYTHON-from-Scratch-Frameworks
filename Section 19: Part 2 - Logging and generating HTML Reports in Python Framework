@@ -68,5 +68,28 @@ class TestExample2(BaseClass):
     def test_editProfile(self, dataLoad):
         print(dataLoad)
 
-이런식으로 테스트 중에 print를 하면 콘솔에는 출력되지만 html 리포트엔 안나온다 그래서 다음엔 이걸 로그파일에 기록하기로 했다 
+이런식으로 테스트 중에 print를 하면 콘솔에는 출력되지만 html 리포트엔 안나온다 그래서 다음엔 이걸 로그파일에 기록하기로 했다 로그파일에 기록되는 것은 html 리포트에도 기록된단다
 
+
+Integratring pytest log into html report
+
+아래는 로거 클래스를 파일 하나에 따로 선언해둔 것이다 이렇게 여기 선언해두고 테스트파일에서 해당 객체를 임포트해 사용할 것이다
+
+import inspect
+import logging
+
+class BaseClass:
+    def getLogger(self):
+        loggerName = inspect.stack()[1][3] 
+        logger = logging.getLogger(loggerName)
+        fileHandler = logging.FileHandler('logfile.log')
+        formatter = logging.Formatter("%(asctime)s :%(levelname)s : %(name)s :%(message)s")
+        fileHandler.setFormatter(formatter)
+
+        logger.addHandler(fileHandler)  # filehandler object
+
+        logger.setLevel(logging.DEBUG)
+        return logger
+
+loggerName = inspect.stack()[1][3]  이걸 보자 inspect.stack()[1][3]는 getLogger 메소드를 호출하는 파일 이름을 뜻한다 이 줄이 없으면 테스트 파일에서
+로거를 불러 로그를 남겼을 때 name 필드에 그 테스트 파일의 이름이 나오지 않고 이 BasClass가 선언된 파일 이름이 나온다
