@@ -1,5 +1,5 @@
-강의에서 셀레니움이 최근데 업데이트한 부분이 있다고 하며 소개를 한다 이미 강의에서는 decprecated 되는 부분들을 모두 최신으로 바꿔서 강의해서 걱정 하지 않아도 된다 
-강의 코드에서는 decrecated 된 부분이 있을지도 모르는데 이건 내가 체크해봐야 한다 
+강의에서 셀레니움이 최근데 업데이트한 부분이 있다고 하며 소개를 한다 이전 강의에서는 decprecated 되는 부분들을 모두 최신으로 바꿔서 강의해서 걱정 하지 않아도 된다 
+이후 강의 코드에서는 decrecated 된 부분이 있는데 읽고 이해하는데 문제가 없으니 그냥 진행하도록하겠다
 
 Selenium Python Framework Implementation from Scratch:
 - Standards of writing selenium tests in framework
@@ -24,4 +24,28 @@ Selenium Python Framework Implementation from Scratch:
 How to generalize browser invocation code
 The browser invocation code should not be in your test cases. It should come from another resuable file
 The best place to put this is a part of fixture. The best file is conftest.py. 
+
+
+다음의 코드를 보자
+conftest.py
+
+@pytest.fixture(scope="class")
+def setup(request):
+    driver = webdriver.Chrome(executable_path="C:\\chromedriver.exe")
+    driver.get("https://rahulshettyacademy.com/angularpractice/")
+    driver.maximize_window()
+    return driver
+
+test_e2e.py
+
+@pytest.mark.usefixtures("setup")
+class TestOne(BaseClass):
+
+    def test_e2e(self, setup):
+        setup.find_element_by_css_selector("a[href*='shop']").click()
+        ~~~~~ 이후의 코드는 중요하지 않음 
+
+여기서 setup fixture에서 driver를 셋업한 후 def test_e2e(self, setup): 이런 방식으로 driver 객체를 넘겨줬다 근데 여기에는 한가지 흠이 있다
+        
+
 
