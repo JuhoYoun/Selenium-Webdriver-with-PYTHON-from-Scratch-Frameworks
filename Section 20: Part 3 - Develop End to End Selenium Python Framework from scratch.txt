@@ -152,8 +152,13 @@ This is one of the common design pattern used across all automation frameworks. 
 이를 위해 pageObjects 패키지를 따로 만들어줬다 이 패키지 안에 HomePage.py, CheckoutPage.py, ConfirmPage.py 등의 클래스 파일들을 만들어줬다 이제 테스트 파일들 안에서 페이지 객체들에
 대한 코드를 가지지 않고 이 클래스 파일들에서 불러오게 할것이다 
 
-class variable vs instance variable
+class variable vs instance variable 
+-> https://www.atatus.com/blog/class-variables-vs-instance-variables-in-java/#:~:text=Class%20variables%20are%20defined%20within,class%20methods%2C%20typically%20the%20constructor.&text=Changes%20made%20to%20the%20class,does%20not%20affect%20all%20instances.
 클래스 내에서 instance variable은 self.shop 이런식으로 쓰는데 class variable은 class_name.shop 이런식으로 쓴다 
+In Python, a class variable is a variable that is defined within a class and outside of any class method. It is a variable that is shared by all instances of the class, meaning that if the variable's value is changed, the change will be reflected in all instances of the class. Class variables help store data common to all instances of a class.
+A class in which the value of the variable vary from object to object is known as instance variables. An instance variable, in object-oriented programming, is a variable that is associated with an instance or object of a class.
+
+It holds data or state that is specific to that instance and can be accessed or modified through the instance's methods. Instance variables are typically declared within the class definition and can have different values for different instances of the same class.
 
 class HomePage:
 
@@ -172,6 +177,9 @@ class HomePage:
         self.driver.find_element(*HomePage.shop).click()   # class variable 이라서 HomePage.shop 이렇게 써야한다 앞에 *를 붙인 이유는 *를 붙이면 tuple에 ()가 없어진다
         checkOutPage = CheckOutPage(self.driver)
         return checkOutPage
+
+
+
 
 
 
