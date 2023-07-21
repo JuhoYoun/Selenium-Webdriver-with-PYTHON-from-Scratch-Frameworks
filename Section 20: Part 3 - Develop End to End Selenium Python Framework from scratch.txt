@@ -39,7 +39,7 @@ def setup(request):
 test_e2e.py
 
 @pytest.mark.usefixtures("setup")
-class TestOne(BaseClass):
+class TestOne():
 
     def test_e2e(self, setup):
         setup.find_element_by_css_selector("a[href*='shop']").click()
@@ -80,11 +80,26 @@ request.cls.driver = driver  이 의미는 이 fixture를 쓰는 클래스의 dr
 
 그리고 클래스 테스트 내에서 쓸 때는 이렇게 써줘야한다
 @pytest.mark.usefixtures("setup")
-class TestOne(BaseClass):
+class TestOne():
 
     def test_e2e(self):
         self.driver.find_element_by_css_selector("a[href*='shop']").click()
         ~~~~~ 이후의 코드는 중요하지 않음 
 
 request.cls.driver = driver  이 동작으로 TestOne 클래스 변수로 driver가 생기기 때문에 self.driver 로 써야한다
+
+이번엔 이 부분을 보자
+@pytest.mark.usefixtures("setup")
+class TestOne(BaseClass):
+
+클래스에 fixture를 적용할 때 클래스 위에다 항상 @pytest.mark.usefixtures("setup") 이렇게 써준다면 100개의 테스트 클래스가 있으면 100번 써줘야한다 
+utilities 라는 패키지를 만들고 그곳에 BaseClass.py 파일을 만들어 BaseClass를 만들자
+
+@pytest.mark.usefixtures("setup")
+class BaseClass:
+    pass 
+
+이렇게 하면 이 클래스는 fixture가 붙어있고 이 클래스를 상속받는 모든 테스트 클래스들은 자동으로 setup fixture 까지 상속받게된다
+class TestOne(BaseClass):   이렇게 상속해주면 된다
+
 
