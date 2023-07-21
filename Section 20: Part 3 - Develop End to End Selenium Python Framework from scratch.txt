@@ -149,7 +149,8 @@ def setup(request):
 What is page object design pattern and its importance?
 This is one of the common design pattern used across all automation frameworks. No matter if itls python, java or javascript, when you develop a UI automation framework, page object mechanism will be definitely implemented because of the advantages it gives to us.
 웹사이트에서 한 페이지에 있는 객체? 엘리먼트? 에대한 테스트는 그 페이지에 대한 하나의 클래스에 몰아놓는다 만약 한 페이지에서 어떤 것을 클릭해서 다른 페이지로 간다면 그 페이지에 대한 클래스를 또 만든다
-
+이를 위해 pageObjects 패키지를 따로 만들어줬다 이 패키지 안에 HomePage.py, CheckoutPage.py, ConfirmPage.py 등의 클래스 파일들을 만들어줬다 이제 테스트 파일들 안에서 페이지 객체들에
+대한 코드를 가지지 않고 이 클래스 파일들에서 불러오게 할것이다 
 
 
 
