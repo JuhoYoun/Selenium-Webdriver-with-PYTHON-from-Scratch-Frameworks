@@ -46,6 +46,22 @@ class TestOne(BaseClass):
         ~~~~~ 이후의 코드는 중요하지 않음 
 
 여기서 setup fixture에서 driver를 셋업한 후 def test_e2e(self, setup): 이런 방식으로 driver 객체를 넘겨줬다 근데 여기에는 한가지 흠이 있다
-        
+browser를 열였으니 
+
+@pytest.fixture(scope="class")
+def setup(request):
+    driver = webdriver.Chrome(executable_path="C:\\chromedriver.exe")
+    driver.get("https://rahulshettyacademy.com/angularpractice/")
+    driver.maximize_window()
+    
+    yield
+    driver.close()
+    return driver
+
+이렇게 테스트가 끝나고 브라우저를 닫게 yield 밑에 driver.close() 이렇게 써줘야되고 return driver 를 yield 뒤에 넣으면 driver 객체를 테스트 시작할 때 넘겨줄 수 없다 
+또 return driver 를 yield 앞에 넣어버리면 yield 전에 return 으로 해당 fixture가 끝나버리므로 브라우저를 닫을 수 없을거 같다 강의에서는 이 return이 yield 앞에 오는 경우
+it will not work 이렇게만 이야기 한다 
+
+
 
 
