@@ -185,18 +185,12 @@ Smart way of optimizing page objects by removing objects creation in tests
 class HomePage:
 
     def __init__(self, driver):
-        self.driver = driver   # instance variable은 이런식으로 self. 을 쓰고 constructor로 선언했다 
+        self.driver = driver  
 
-    shop = (By.CSS_SELECTOR, "a[href*='shop']") # 이 아래것들은 모두 class variable이다 
-    name = (By.CSS_SELECTOR, "[name='name']")
-    email = (By.NAME, "email")
-    check = (By.ID, "exampleCheck1")
-    gender= (By.ID, "exampleFormControlSelect1")
-    submit = (By.XPATH, "//input[@value='Submit']")
-    successMessage = (By.CSS_SELECTOR, "[class*='alert-success']")
+    shop = (By.CSS_SELECTOR, "a[href*='shop']") 
 
     def shopItems(self):
-            return self.driver.find_element(*HomePage.shop)
+        return self.driver.find_element(*HomePage.shop)
 
 
 class TestOne(BaseClass):
@@ -208,8 +202,20 @@ class TestOne(BaseClass):
         cards = checkoutpage.getCardTitles()
 
 여길 보면 homePage 객체도 생성하고 CheckOutPage 객체도 따로 생성한다 이 부분을 optimize 해보자  homePage.shopItems().click() 이건 shopitem button이 잘 작동하나
-테스트하는 라인인데 사실 그 버튼을 누르게 되면 CheckOutPage 로 가게 된다 즉 여기가 HomePage와 CheckOutPage의 integration point이다
+테스트하는 라인인데 사실 그 버튼을 누르게 되면 CheckOutPage 로 가게 된다 즉 여기가 HomePage와 CheckOutPage의 integration point이다 
+위의 두 클래스 코드를 아래와 같이 optimize할 수 있다
 
+class HomePage:
+
+    def __init__(self, driver):
+        self.driver = driver  
+
+    shop = (By.CSS_SELECTOR, "a[href*='shop']") 
+
+    def shopItems(self):
+        self.driver.find_element(*HomePage.shop).click()
+        checkOutPage = CheckOutPage(self.driver)
+        return checkOutPage
 
 
 
