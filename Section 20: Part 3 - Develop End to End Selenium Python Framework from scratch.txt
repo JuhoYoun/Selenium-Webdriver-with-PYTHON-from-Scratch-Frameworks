@@ -180,6 +180,10 @@ class HomePage:
 
 
 
+Smart way of optimizing page objects by removing objects creation in tests
+
+
+
 
 
 
