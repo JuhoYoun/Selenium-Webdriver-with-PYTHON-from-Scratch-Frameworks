@@ -1,2 +1,18 @@
 강의에서 셀레니움이 최근데 업데이트한 부분이 있다고 하며 소개를 한다 이미 강의에서는 decprecated 되는 부분들을 모두 최신으로 바꿔서 강의해서 걱정 하지 않아도 된다 
 강의 코드에서는 decrecated 된 부분이 있을지도 모르는데 이건 내가 체크해봐야 한다 
+
+Selenium Python Framework Implementation from Scratch:
+- Standards of writing selenium tests in framework
+- Creating Browser invocation Fixtures in conftest.py
+- Setting up Base Class to hold all common Utilities
+- Inheriting Base class to all tests to remove Fixture rebundant code
+- Passing Command Line options to select browser at run time
+- Implementing Page Object mechanism
+- Smarter way of returning Page objects from navigation methods
+- Creating Selenium WebDriver Custom Utilities in Base Class
+- Parameterizing Webdriver tests with multiple data sets
+- Organizing Data from separate data files and injecting into fixture at run time
+- Implementing logging feature to wedriver tests
+- Text Execution html reporting
+- Automatic screenshot capture on test failures
+- Integrating selenium python framework to Jenkins CI tool with Jenkin build parameteriztion
