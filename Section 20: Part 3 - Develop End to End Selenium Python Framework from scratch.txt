@@ -225,7 +225,7 @@ class TestOne(BaseClass):
         checkoutpage = homePage.shopItems()
         cards = checkoutpage.getCardTitles()
 
-이렇게 바꿀 수 있다 
+이렇게 바꿀 수 있다  checkOutPage와 confirmPage도 비슷한식으로 연결하면 된다
 
 
 
