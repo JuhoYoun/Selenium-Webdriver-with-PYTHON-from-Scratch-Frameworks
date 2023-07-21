@@ -128,5 +128,15 @@ def cmdopt(request):
     return request.config.getoption("--cmdopt")
 
 
+-> it is a hook for adding a command line options
+--cmdopt 이건 키 밸류 이 경우엔 browser_name이다 action="store" 이 부분은 이 옵션값을 browser_name 변수에다 저장한다는 의미다 default="type1" 이 부분은
+옵션값을 넘기지 않았을 때 cmdopt 즉 여기선 browser_name의 디폴트 값이다 help="my option: type1 or type2" 이 부분은 이 키 밸류가 뭘 하는지에 대한 설명이고 이 부분은 optional 이다
+
+def pytest_addoption(parser):
+    parser.addoption(
+        "--browser_name", action="store", default="chrome"
+    )
+
+이 hook을 conftest.py 에 추가해주면 된다 
 
 
