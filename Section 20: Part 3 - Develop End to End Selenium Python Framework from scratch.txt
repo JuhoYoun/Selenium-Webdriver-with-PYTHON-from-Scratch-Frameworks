@@ -152,5 +152,26 @@ This is one of the common design pattern used across all automation frameworks. 
 이를 위해 pageObjects 패키지를 따로 만들어줬다 이 패키지 안에 HomePage.py, CheckoutPage.py, ConfirmPage.py 등의 클래스 파일들을 만들어줬다 이제 테스트 파일들 안에서 페이지 객체들에
 대한 코드를 가지지 않고 이 클래스 파일들에서 불러오게 할것이다 
 
+class variable vs instance variable
+클래스 내에서 instance variable은 self.shop 이런식으로 쓰는데 class variable은 class_name.shop 이런식으로 쓴다 
+
+class HomePage:
+
+    def __init__(self, driver):
+        self.driver = driver   # instance variable은 이런식으로 self. 을 쓰고 constructor로 선언했다 
+
+    shop = (By.CSS_SELECTOR, "a[href*='shop']") # 이 아래것들은 모두 class variable이다 
+    name = (By.CSS_SELECTOR, "[name='name']")
+    email = (By.NAME, "email")
+    check = (By.ID, "exampleCheck1")
+    gender= (By.ID, "exampleFormControlSelect1")
+    submit = (By.XPATH, "//input[@value='Submit']")
+    successMessage = (By.CSS_SELECTOR, "[class*='alert-success']")
+
+    def shopItems(self):
+        self.driver.find_element(*HomePage.shop).click()   # class variable 이라서 HomePage.shop 이렇게 써야한다 앞에 *를 붙인 이유는 *를 붙이면 tuple에 ()가 없어진다
+        checkOutPage = CheckOutPage(self.driver)
+        return checkOutPage
+
 
 
