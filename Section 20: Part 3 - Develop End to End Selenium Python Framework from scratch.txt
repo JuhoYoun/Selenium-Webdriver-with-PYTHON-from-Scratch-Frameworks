@@ -174,13 +174,30 @@ class HomePage:
     successMessage = (By.CSS_SELECTOR, "[class*='alert-success']")
 
     def shopItems(self):
-        self.driver.find_element(*HomePage.shop).click()   # class variable 이라서 HomePage.shop 이렇게 써야한다 앞에 *를 붙인 이유는 *를 붙이면 tuple에 ()가 없어진다
-        checkOutPage = CheckOutPage(self.driver)
-        return checkOutPage
+            return self.driver.find_element(*HomePage.shop)  # class variable 이라서 HomePage.shop 이렇게 써야한다 앞에 *를 붙인 이유는 *를 붙이면 tuple에 ()가 없어진다
+
 
 
 
 Smart way of optimizing page objects by removing objects creation in tests
+
+
+class HomePage:
+
+    def __init__(self, driver):
+        self.driver = driver   # instance variable은 이런식으로 self. 을 쓰고 constructor로 선언했다 
+
+    shop = (By.CSS_SELECTOR, "a[href*='shop']") # 이 아래것들은 모두 class variable이다 
+    name = (By.CSS_SELECTOR, "[name='name']")
+    email = (By.NAME, "email")
+    check = (By.ID, "exampleCheck1")
+    gender= (By.ID, "exampleFormControlSelect1")
+    submit = (By.XPATH, "//input[@value='Submit']")
+    successMessage = (By.CSS_SELECTOR, "[class*='alert-success']")
+
+    def shopItems(self):
+            return self.driver.find_element(*HomePage.shop)
+
 
 class TestOne(BaseClass):
 
@@ -190,7 +207,8 @@ class TestOne(BaseClass):
         checkoutpage = CheckOutPage(self.driver)
         cards = checkoutpage.getCardTitles()
 
-여길 보면 homePage 객체도 생성하고 CheckOutPage 객체도 따로 생성한다 이 부분을 optimize 해보자
+여길 보면 homePage 객체도 생성하고 CheckOutPage 객체도 따로 생성한다 이 부분을 optimize 해보자  homePage.shopItems().click() 이건 shopitem button이 잘 작동하나
+테스트하는 라인인데 사실 그 버튼을 누르게 되면 CheckOutPage 로 가게 된다 즉 여기가 HomePage와 CheckOutPage의 integration point이다
 
 
 
