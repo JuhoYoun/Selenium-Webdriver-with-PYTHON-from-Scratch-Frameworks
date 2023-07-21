@@ -62,6 +62,29 @@ def setup(request):
 또 return driver 를 yield 앞에 넣어버리면 yield 전에 return 으로 해당 fixture가 끝나버리므로 브라우저를 닫을 수 없을거 같다 강의에서는 이 return이 yield 앞에 오는 경우
 it will not work 이렇게만 이야기 한다 
 
+request는 fixture를 선언할 때 디폴트로 딸려오는 instance이다 
+위의 문제를 해결하기 위해 한줄이면 충분하다 
+
+@pytest.fixture(scope="class")
+def setup(request):
+    driver = webdriver.Chrome(executable_path="C:\\chromedriver.exe")
+    driver.get("https://rahulshettyacademy.com/angularpractice/")
+    driver.maximize_window()
+    request.cls.driver = driver
+    
+    yield
+    driver.close()
 
 
+request.cls.driver = driver  이 의미는 이 fixture를 쓰는 클래스의 driver 변수는 fixture에서 선언한 driver와 같다는 의미이다
+
+그리고 클래스 테스트 내에서 쓸 때는 이렇게 써줘야한다
+@pytest.mark.usefixtures("setup")
+class TestOne(BaseClass):
+
+    def test_e2e(self):
+        self.driver.find_element_by_css_selector("a[href*='shop']").click()
+        ~~~~~ 이후의 코드는 중요하지 않음 
+
+request.cls.driver = driver  이 동작으로 TestOne 클래스 변수로 driver가 생기기 때문에 self.driver 로 써야한다
 
