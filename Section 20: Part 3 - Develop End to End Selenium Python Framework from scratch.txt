@@ -16,3 +16,12 @@ Selenium Python Framework Implementation from Scratch:
 - Text Execution html reporting
 - Automatic screenshot capture on test failures
 - Integrating selenium python framework to Jenkins CI tool with Jenkin build parameteriztion
+
+일단 시작하기 앞서 강의에서는 파이썬 프로젝트 폴더를 만들고(PythonSelfFramework) 그 안에 패키지 폴더(tests)를 만들었다 
+
+
+
+How to generalize browser invocation code
+The browser invocation code should not be in your test cases. It should come from another resuable file
+The best place to put this is a part of fixture. The best file is conftest.py. 
+
