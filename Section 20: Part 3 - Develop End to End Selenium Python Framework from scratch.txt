@@ -182,7 +182,15 @@ class HomePage:
 
 Smart way of optimizing page objects by removing objects creation in tests
 
+class TestOne(BaseClass):
 
+    def test_e2e(self):
+        homePage = HomePage(self.driver)
+        homePage.shopItems().click()
+        checkoutpage = CheckOutPage(self.driver)
+        cards = checkoutpage.getCardTitles()
+
+여길 보면 homePage 객체도 생성하고 CheckOutPage 객체도 따로 생성한다 이 부분을 optimize 해보자
 
 
 
