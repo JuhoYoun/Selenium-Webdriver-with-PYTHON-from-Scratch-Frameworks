@@ -228,4 +228,7 @@ class TestOne(BaseClass):
 이렇게 바꿀 수 있다  checkOutPage와 confirmPage도 비슷한식으로 연결하면 된다
 
 
+Creating Custom Utilities in Selenium Pytest Framework
+
+
 
