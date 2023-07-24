@@ -234,4 +234,7 @@ Creating Custom Utilities in Selenium Pytest Framework
 
 
 
+Generating HTML Reports with Logging Integration
+
+
 
