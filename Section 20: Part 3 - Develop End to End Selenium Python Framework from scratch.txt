@@ -229,6 +229,9 @@ class TestOne(BaseClass):
 
 
 Creating Custom Utilities in Selenium Pytest Framework
+대충 많이 쓰이는 기능을 BaseClass 메소드로 바꾸는 작업들이다
+
+
 
 
 
