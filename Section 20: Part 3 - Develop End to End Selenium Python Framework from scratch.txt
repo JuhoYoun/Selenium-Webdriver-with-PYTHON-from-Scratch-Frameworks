@@ -235,6 +235,38 @@ Creating Custom Utilities in Selenium Pytest Framework
 
 
 Generating HTML Reports with Logging Integration
+PythonSelFramework/tests  이 경로에서 py.test --html=report.html   이렇게 해주면 html 리포트가 작성된다
+강사는 log 파일은 utilities 폴더에 넣는것도 괜찮지만 스크린샷이나 html 리포트는 tests 폴더에 넣는것을 선호한다고 했다
+
+html report에 스크린샷도 포함되게 하려면 다음의 플러그인이 필요하다 conftest.py에 다음의 플러그인을 추가했다
+@pytest.mark.hookwrapper
+def pytest_runtest_makereport(item):
+    """
+        Extends the PyTest Plugin to take and embed screenshot in html report, whenever test fails.
+        :param item:
+        """
+    pytest_html = item.config.pluginmanager.getplugin('html')
+    outcome = yield
+    report = outcome.get_result()
+    extra = getattr(report, 'extra', [])
+
+    if report.when == 'call' or report.when == "setup":
+        xfail = hasattr(report, 'wasxfail')
+        if (report.skipped and xfail) or (report.failed and not xfail):
+            file_name = report.nodeid.replace("::", "_") + ".png"
+            _capture_screenshot(file_name)
+            if file_name:
+                html = '<div><img src="%s" alt="screenshot" style="width:304px;height:228px;" ' \
+                       'onclick="window.open(this.src)" align="right"/></div>' % file_name
+                extra.append(pytest_html.extras.html(html))
+        report.extra = extra
+
+
+def _capture_screenshot(name):
+        driver.get_screenshot_as_file(name)
+
+
+코드를 이해할 필요 없다고 한다 어차피 여기서 한번 보고 앞으로 안본다
 
 
 
