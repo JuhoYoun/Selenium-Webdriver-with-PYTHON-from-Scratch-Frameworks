@@ -49,7 +49,15 @@ py.test --browser_name "$browserName" --html=$WORKSPACE/reports/reports.html
 이제 Build now 가 Build with parameter 버튼으로 바뀐걸 볼 수 있다 그리고 브라우저를 선택할 수 있는 옵션이 생긴걸 볼 수 있다 
 
 
-
-
-
+Creating Jenkin Junit results with pytest commands
+There is a simple plugin that help you see the reports -> Junit
+pytest는 테스트 결과를 XML로 리포트하는 기능이 있다 Jenkin은 그 XML을 읽을 수 있다 
+Configuration으로 가서 Add post-build action을 누른다 그리고 Publish JUnit test result report를 누른다 
+Test report XMLs 에 XML 파일 경로를 입력해야한다 
+근데 이 XML 파일은 어떻게 생성할까? pytest는 테스트가 끝나고 자동으로 이 xml 파일을 만들어준다 
+py.test --browser_name "$browserName" --html=$WORKSPACE/reports/reports.html
+커맨드의 이 부분을 py.test --browser_name "$browserName" --html=$WORKSPACE/reports/reports.html -v --junitxml="result.xml"
+이렇게 바꿔준다 이건 pytest inbuilt plugin 으로 플러그인 코드를 따로 어디다 붙여줄 필요가 없다 
+아까 Test report XMLs 이부분에는 tests/*.xml 으로 써준다 regex로 tests 디렉토리 안의 모든 xml파일을 의미한다 
+이렇게 하고 save 하자 
 
