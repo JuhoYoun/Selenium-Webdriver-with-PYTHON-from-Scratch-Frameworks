@@ -22,8 +22,34 @@ custom workspace를 입력한다 여기에는 Python selenium framework의 path�
 cd tests
 py.test --browser_name chrome --html=$WORKSPACE/reports/reports.html
 
-$WORKSPACE 이건 environment variable로 우리가 설정한 workspace의 경로가 된다
+$WORKSPACE 이건 environment variable로 우리가 설정한 workspace의 경로가 된다 하드코딩을 피할 수 있다 
 jenkins environment variable -> http://localhost:8080/env-vars.html/
 
 그리고 마지막으로 save를 누르면 프로젝트가 생성된다 이제 build now 를 누르면 project execution이 된다 그리고 console output에서 진행상황을 볼 수 있다
 이 프로젝트의 work space로 가면 디렉토리 파일들을 볼 수 있다 
+
+
+Setting up Jenkins parameterized job variables for browser selection
+
+위의 configuration에 들어가 커맨드를 다시 확인해보자 -> py.test --browser_name chrome --html=$WORKSPACE/reports/reports.html
+여기서 chrome 또한 hard coding이다 이 부분을 parameterize 해서 하드 코드하지 않고 빌드할 때 값을 넘길 수 있게 만들겠다 
+계속 configuration 페이지에서 진행하자 This project is parameterized 라는 항목에 체크한다 그리고 Add parameter를 클린한 후 choice parameter를 선택한다 
+name에는 browserName라고 쓰고 choices에는
+chrome
+firefox
+IE 
+
+그리고 커맨드의 
+py.test --browser_name chrome --html=$WORKSPACE/reports/reports.html
+이 부분을 
+py.test --browser_name "$browserName" --html=$WORKSPACE/reports/reports.html
+
+이렇게 쓰고 save를 눌러준다  (Window 우저는 Execute shell이 아니라 Execute Windows batch command를 선택해야하고 "$browserName" 이부분도 %browserName% 이렇게 써야한다)
+
+이제 Build now 가 Build with parameter 버튼으로 바뀐걸 볼 수 있다 
+
+
+
+
+
+
