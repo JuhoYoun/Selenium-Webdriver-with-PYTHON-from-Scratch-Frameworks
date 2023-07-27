@@ -4,3 +4,37 @@ Excel로 data 를 가져오는것은 outdated한 방식이지만 여전히 많�
 openpyxl을 쓰면 된다
 
 강의에서는 파이참을 쓰는데 openpyxl이 깔려있는 interpreter랑 pytest interpreter랑 달라서 interpreter를 바꿔줬다
+
+
+    @pytest.fixture(params=HomePageData.getTestData("Testcase2"))  
+    def getData(self, request):
+        return request.param
+
+이 코드를 보면 HomePageData는 클레스이고 getTestData는 메소드이다 클래스 배리어블 같은 경우에는 HomePageData.test_HomePage_data 이런식으로 클래스의 객체를 생성하지 않고
+클래스이름.클래스변수  이런식으로 불러올 수 있는데 메소드 같은 경우에는 원래 HomePageData.getTestData("Testcase2") 이런식으로 못 가져오고 반드시 객체를 만들고
+객체명.메소드 이런식으로 써야한다 
+
+import openpyxl
+
+class HomePageData:
+    test_HomePage_data = [{"firstname":"Rahul","lastname":"shetty","gender":"Male"}, {"firstname":"Anshika", "lastname":"shetty", "gender":"Female"}]
+
+    @staticmethod
+    def getTestData(test_case_name):
+        Dict = {}
+        book = openpyxl.load_workbook("C:\\Users\\Owner\\Documents\\PythonDemo.xlsx")
+        sheet = book.active
+        for i in range(1, sheet.max_row + 1):  # to get rows
+            if sheet.cell(row=i, column=1).value == test_case_name:
+
+                for j in range(2, sheet.max_column + 1):  # to get columns
+                    # Dict["lastname"]="shetty
+                    Dict[sheet.cell(row=1, column=j).value] = sheet.cell(row=i, column=j).value
+        return[Dict]
+
+하지만 위에서처럼 @staticmethod를 붙여주면 메소드도 HomePageData.getTestData("Testcase2") 이렇게 객체를 생성하지 않고 쓸 수 있다 
+즉 @staticmethod를 붙여주는 이유는 보통 이 메소드를 쓰기 위해 구지 객체를 생성해야하는 수고를 덜어주기 위함이다 그리고 여기 보면은 클래스 내에 있는 메소드인데도 불구하고
+def getTestData(test_case_name):  이렇게 self 가  패러미터로 없는것을 볼 수 있다 즉 self는 static method가 아닐 때만 필요하다 
+
+
+
