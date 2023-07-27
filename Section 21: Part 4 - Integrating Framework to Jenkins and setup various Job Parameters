@@ -20,3 +20,6 @@ custom workspace를 입력한다 여기에는 Python selenium framework의 path�
 
 cd tests
 py.test --browser_name chrome --html=$WORKSPACE/reports/reports.html
+
+$WORKSPACE 이건 environment variable로 우리가 설정한 workspace의 경로가 된다
+jenkins environment variable -> http://localhost:8080/env-vars.html/
