@@ -1,1 +1,6 @@
 Introduction to Excel Data driven testing using Pyxl
+
+Excel로 data 를 가져오는것은 outdated한 방식이지만 여전히 많은 사람들이 excel에 더 편안함을 느끼다 
+openpyxl을 쓰면 된다
+
+강의에서는 파이참을 쓰는데 openpyxl이 깔려있는 interpreter랑 pytest interpreter랑 달라서 interpreter를 바꿔줬다
