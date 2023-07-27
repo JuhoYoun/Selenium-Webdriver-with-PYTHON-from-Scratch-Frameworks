@@ -14,6 +14,7 @@ Restart the Jenkins service: brew services restart jenkins-lts
 Update the Jenkins version: brew upgrade jenkins-lts
 After starting the Jenkins service, browse to http://localhost:8080 and follow the instructions to complete the installation. Also see the external materials for installation guidelines. For example, this blogpost describes the installation process.
 
+Integrating python selenium framework into jenkins ci tool
 
 설치한후 jenkins로 가서 new item을 만들어보자 item name에 PythonSeleniumTest 그리고 freestyle project를 선택하고 ok 클릭 General에서 advanced를 눌러 
 custom workspace를 입력한다 여기에는 Python selenium framework의 path를 입력한다 딴건 놔두고 build로 가서 Execute shell을 누른다 그리고 command 창에 다음을 입력하자
@@ -23,3 +24,6 @@ py.test --browser_name chrome --html=$WORKSPACE/reports/reports.html
 
 $WORKSPACE 이건 environment variable로 우리가 설정한 workspace의 경로가 된다
 jenkins environment variable -> http://localhost:8080/env-vars.html/
+
+그리고 마지막으로 save를 누르면 프로젝트가 생성된다 이제 build now 를 누르면 project execution이 된다 그리고 console output에서 진행상황을 볼 수 있다
+이 프로젝트의 work space로 가면 디렉토리 파일들을 볼 수 있다 
