@@ -46,7 +46,7 @@ py.test --browser_name "$browserName" --html=$WORKSPACE/reports/reports.html
 
 이렇게 쓰고 save를 눌러준다  (Window 우저는 Execute shell이 아니라 Execute Windows batch command를 선택해야하고 "$browserName" 이부분도 %browserName% 이렇게 써야한다)
 
-이제 Build now 가 Build with parameter 버튼으로 바뀐걸 볼 수 있다 
+이제 Build now 가 Build with parameter 버튼으로 바뀐걸 볼 수 있다 그리고 브라우저를 선택할 수 있는 옵션이 생긴걸 볼 수 있다 
 
 
 
