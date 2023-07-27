@@ -61,3 +61,5 @@ py.test --browser_name "$browserName" --html=$WORKSPACE/reports/reports.html
 아까 Test report XMLs 이부분에는 tests/*.xml 으로 써준다 regex로 tests 디렉토리 안의 모든 xml파일을 의미한다 
 이렇게 하고 save 하자 
 
+프로젝트를 빌드하고 Latest test results로 가면 테스트 결과 정보를 볼 수 있다 그리고 이렇게 다섯번 정도 빌드를 하면 테스트 결과 트렌드도 그래프로 보여준다 
+
